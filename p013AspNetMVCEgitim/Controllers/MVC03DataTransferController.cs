@@ -18,12 +18,23 @@ namespace p013AspNetMVCEgitim.Controllers
             return View();
         }
         [HttpPost] 
-        public IActionResult Index(string text1, string ddListe, bool cbOnay)
+        public IActionResult Index(string text1, string ddListe, bool cbOnay, IFormCollection formCollection)
         {
-            ViewBag.BirinciYontem = "1. Yöntemle(Parametreden gelen veriler)";
+            ViewBag.Yontem1 = "1. Yöntemle(Parametreden gelen veriler)";
             ViewBag.Mesaj = "Textbox dan gelen veri : " + text1;
-            ViewBag.MesajListe = "ddListe dan gelen veri : " + ddListe;
+            ViewData["MesajListe"] = "ddListe dan gelen veri : " + ddListe;
             TempData["Tdata"] = "cbOnaydan gelen değer :" + cbOnay;
+
+            ViewBag.Yontem2 = "2. Yöntemle(IFormCollection)";
+            ViewBag.Mesaj2 = "Textbox dan gelen veri : " + formCollection["text1"];
+            ViewData["MesajListe2"] = "ddListe dan gelen veri : " + formCollection["ddListe"];
+            TempData["Tdata2"] = "cbOnaydan gelen değer :" + formCollection["cbOnay"][0];
+
+            ViewBag.Yontem3 = "3. Yöntemle(RequestForm)";
+            ViewBag.Mesaj3 = "Textbox dan gelen veri : " + Request.Form["text1"]; // formun içindeki yakaladığımız verileri veri tabanına yollamak için
+            ViewData["MesajListe3"] = "ddListe dan gelen veri : " + Request.Form["ddListe"];
+            TempData["Tdata3"] = "cbOnaydan gelen değer :" + Request.Form["cbOnay"][0];
+            
             return View();
         }
     }
