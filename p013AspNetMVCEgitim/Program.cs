@@ -1,7 +1,11 @@
+using p013AspNetMVCEgitim.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<UyeContext>();// BU SATIRI SANAL VERÝTABANI KULLANABÝLMEK ÝÇÝN EKLEDÝK.   
+
 
 var app = builder.Build();
 
