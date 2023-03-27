@@ -21,7 +21,7 @@ namespace p013AspNetMVCEgitim.Models
         [Display(Name = "Kullanıcı Adı")]
         public string? KullaniciAdi { get; set; }
         [Display(Name = "Şifre")]
-        public int? Sifre { get; set; }
+        public string? Sifre { get; set; }
         public int? SifreTekrar { get; set; }
 
 
