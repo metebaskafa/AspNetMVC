@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<UyeContext>();// BU SATIRI SANAL VERÝTABANI KULLANABÝLMEK ÝÇÝN EKLEDÝK.   
 
-
+builder.Services.AddSession(); // uygulamda session kullanabilmek için bu satýrý ekliyoruz.
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -19,6 +19,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection(); // uygulama http isteklerini https ile güvenli baðlantýya yönlendirmeyi desteklesin.
 app.UseStaticFiles(); // uygulama statik dosyalarý (wwwroot klasöründekiler) desteklesin
+
+app.UseSession();// uygulamda session kullanabilmek için bu satýrý ekliyoruz.
 
 app.UseRouting();// uygulama routing ile yönlendirme kullansýn
 app.UseAuthentication(); // uygulama kullanýcý giriþ sistemini aktif etsin
